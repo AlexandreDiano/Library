@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @loan.cpf %>
+</p>
+
+<p>
+  <strong>Borrow books:</strong>
+  <%= @loan.borrow_books %>
+</p>
+
+<p>
+  <strong>Returned books:</strong>
+  <%= @loan.returned_books %>
+</p>
+
+<p>
+  <strong>Total pending:</strong>
+  <%= @loan.total_pending %>
+</p>
+
+<%= link_to 'Edit', edit_loan_path(@loan) %> |
+<%= link_to 'Back', loans_path %>

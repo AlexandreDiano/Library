@@ -1,0 +1,57 @@
+<%= form_with(model: profile) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.number_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %>
+    <%= form.number_field :zip_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.text_field :debit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :borrows_amout %>
+    <%= form.number_field :borrows_amout %>
+  </div>
+
+  <div class="field">
+    <%= form.label :books_returned %>
+    <%= form.number_field :books_returned %>
+  </div>
+
+  <div class="field">
+    <%= form.label :references %>
+    <%= form.text_field :references %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

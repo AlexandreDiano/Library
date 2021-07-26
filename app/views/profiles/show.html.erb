@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @profile.cpf %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @profile.age %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @profile.zip_code %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @profile.debit %>
+</p>
+
+<p>
+  <strong>Borrows amout:</strong>
+  <%= @profile.borrows_amout %>
+</p>
+
+<p>
+  <strong>Books returned:</strong>
+  <%= @profile.books_returned %>
+</p>
+
+<p>
+  <strong>References:</strong>
+  <%= @profile.references %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

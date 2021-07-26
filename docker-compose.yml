@@ -1,0 +1,39 @@
+version: "3.7"
+volumes:
+  database_vol2:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app_library
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_DATABASE: ${DATABASE_DATABASE}
+      RACK_ENV: development
+      RAILS_ENV: development
+      RAILS_LOG_TO_STDOUT: enabled
+
+  db:
+    image: postgres:11.6-alpine
+    volumes:
+      - database_vol2:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "$DATABASE_USERNAME"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 40s
