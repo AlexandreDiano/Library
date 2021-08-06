@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
 
   def index

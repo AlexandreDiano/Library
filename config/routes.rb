@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :profile
+  resources :profiles
   devise_for :users
   resources :loans
   resources :books
