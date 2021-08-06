@@ -1,0 +1,8 @@
+<h1 class="pt-3" align="center">Editing Profile</h1>
+
+<%= render 'form', profile: @profile %>
+
+<div class="container text-center">
+  <%= link_to 'Show', @profile, class: 'btn btn-primary text-light'%>
+  <%= link_to 'Back', profile_path, class: 'btn btn-primary text-light' %>
+</div>

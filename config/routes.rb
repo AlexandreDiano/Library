@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :user_types
-  resources :profiles
+  resources :profile
   devise_for :users
   resources :loans
   resources :books

@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<div class="container" align="center">
+  <h1>Users</h1>
+</div>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Email</th>
+    <th scope="col">ID</th>
+    <th scope="col">title</th>
+    <th scope="col">ID</th>
+    <th scope="col">cpf</th>
+    <th scope="col">name</th>
+    <th scope="col">age</th>
+    <th scope="col">zip_code</th>
+    <th scope="col">borrows_returned</th>
+    <th scope="col">borrows_amount</th>
+    <th scope="col">debit</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><h6><%= user.id %></h6></td>
+      <td><h6><%= user.email %><br/></h6></td>
+  <% end %>
+  <% @user_types.each do |type| %>
+      <td><h6><%= type.id %></h6></td>
+      <td><h6><%= type.title %><br/></h6></td>
+  <% end %>
+  <% @profiles.each do |profile| %>
+      <td><h6><%= profile.id %></h6></td>
+      <td><h6><%= profile.cpf %><br/></h6></td>
+      <td><h6><%= profile.name %><br/></h6></td>
+      <td><h6><%= profile.age %><br/></h6></td>
+      <td><h6><%= profile.zip_code %><br/></h6></td>
+      <td><h6><%= profile.borrows_returned %><br/></h6></td>
+      <td><h6><%= profile.borrows_amount %><br/></h6></td>
+      <td><h6><%= profile.debit %><br/></h6></td>
+      <td> <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-primary text-light' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

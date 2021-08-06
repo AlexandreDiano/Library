@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+<div class="container" align="center">
+  <div class="card col-6">
+  <div class="card-body">
+    <h3 class="card-title">Your Informations</h3>
+    <table class="table table-hover">
+      <tbody align="center">
+      <tr>
+        <td>
+          <h5>Name:</h5>
+          <h6><%= @profile.name %></h6>
+        </td>
+        <td>
+          <h5>CPF:</h5>
+          <h6><%= @profile.cpf %></h6>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h5>Age</h5>
+          <h6><%= @profile.age %></h6>
+        </td>
+        <td>
+          <h5>Zip Code</h5>
+          <h6><%= @profile.zip_code %></h6>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h5>Debit</h5>
+          <h6><%= @profile.debit %></h6>
+        </td>
+        <td>
+          <h5>Borrows Amount</h5>
+          <h6><%= @profile.borrows_amount %></h6>
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center" colspan="2">
+          <h5>Borrows Returned</h5>
+          <h6><%= @profile.borrows_returned %></h6>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <%= link_to 'Edit', edit_profile_path(@profile), class: 'btn btn-primary text-light' %>
+  </div>
+</div>
+
+</div>

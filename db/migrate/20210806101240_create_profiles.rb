@@ -7,8 +7,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.integer :zip_code
       t.float :debit
       t.integer :borrows_amount
-      t.integer :books_returned
-      t.references :user, foreign_key: true
+      t.integer :borrows_returned
 
       t.timestamps
     end

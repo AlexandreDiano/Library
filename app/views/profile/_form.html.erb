@@ -1,0 +1,73 @@
+<%= form_with(model: profile) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# if user_signed_in?  %>
+  <%# @users.each do |user| %>
+  <%#= user.email %>
+  <%# end %>
+  <%# end %>
+  <div class="container pt-3">
+    <form>
+      <div class="row">
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :name, class: 'form-control' %>
+            <%= form.label :name, class: 'form-label' %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :cpf, class: 'form-control' %>
+            <%= form.label :cpf, class: 'form-label' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.number_field :age, class: 'form-control' %>
+            <%= form.label :age, class: 'form-label'  %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :zip_code, class: 'form-control' %>
+            <%= form.label :zip_code, class: 'form-label' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :debit, class: 'form-control' %>
+            <%= form.label :debit, class: 'form-label'  %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :borrows_amount, class: 'form-control' %>
+            <%= form.label :borrows_amount, class: 'form-label'  %>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline mb-4">
+            <%= form.text_field :borrows_returned, class: 'form-control' %>
+            <%= form.label :borrows_returned, class: 'form-label'  %>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= form.submit class: 'btn btn-primary mb-4' %>
+      </div>
+    </form>
+  </div>
+<% end %>

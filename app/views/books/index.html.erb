@@ -35,12 +35,15 @@
       <td><h6><%= book.language %></h6></td>
       <td><h6><%= book.author %></h6></td>
       <td><h6><%= book.total_amount %></h6></td>
-      <td><h6><%= book.available %></h6></td>
+      <% if book.available? %>
+      <td><h6>Yes</h6></td>
+      <% else %>
+      <td><h6>No</h6></td>
+      <% end %>
       <% if user_signed_in? %>
       <td><%= link_to 'Show', book, class: 'btn btn-primary text-light' %></td>
       <td><%= link_to 'Edit', edit_book_path(book), class: 'btn btn-primary text-light' %></td>
       <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light' %></td>
-      <% else %>
         <td><%= link_to 'Borrow Book', 'asd', class: 'btn btn-primary text-light' %></td>
       <% end %>
     </tr>

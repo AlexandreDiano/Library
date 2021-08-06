@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_202331) do
+ActiveRecord::Schema.define(version: 2021_08_06_111320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,19 +44,21 @@ ActiveRecord::Schema.define(version: 2021_07_16_202331) do
     t.integer "zip_code"
     t.float "debit"
     t.integer "borrows_amount"
-    t.integer "books_returned"
-    t.bigint "user_id"
+    t.integer "borrows_returned"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_types_id"
+    t.bigint "user_id", null: false
+    t.bigint "user_type_id", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-    t.index ["user_types_id"], name: "index_profiles_on_user_types_id"
+    t.index ["user_type_id"], name: "index_profiles_on_user_type_id"
   end
 
   create_table "user_types", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_user_types_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_202331) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "profiles", "user_types", column: "user_types_id"
+  add_foreign_key "profiles", "user_types"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_types", "users"
 end
