@@ -1,3 +1,3 @@
 class UserType < ApplicationRecord
-  has_one :profiles
+  has_one :profile
 end

@@ -3,7 +3,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
     create_table :profiles do |t|
       t.integer :cpf
       t.string :name
-      t.integer :age
+      t.bigint :age
       t.integer :zip_code
       t.float :debit
       t.integer :borrows_amount
