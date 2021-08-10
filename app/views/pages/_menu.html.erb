@@ -40,13 +40,16 @@
         <li class="nav-item">
           <%= link_to "Books", "/books", class: 'nav-link'%>
         </li>
-        <li class="nav-item">
-            <%#= current_user.id %>
-            <%= link_to "Profile Informations", edit_profile_path(current_user.profile), class: 'nav-link'%>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
-        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Profile Informations", profile_path(current_user.profile), class: 'nav-link'%>
+          </li>
+          <% if current_user.profile.user_type_id == 2 %>
+            <li class="nav-item">
+              <%= link_to "Book Registration", new_book_path, class: 'nav-link'%>
+            </li>
+            <% end %>
+        <% end %>
       </ul>
       <!-- Left links -->
     </div>
@@ -67,9 +70,7 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
-        </li>
+
       </ul>
 
 

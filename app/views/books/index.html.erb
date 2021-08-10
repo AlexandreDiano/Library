@@ -16,15 +16,18 @@
     <th scope="col">Total amount</th>
     <th scope="col">Available</th>
     <% if !user_signed_in? %>
-    <th>Actions</th>
+      <th>Actions</th>
     <% else %>
       <th colspan="1"></th>
-      <th colspan="2">Actions</th>
+      <% if current_user.profile.user_type_id == 2 %>
+        <th colspan="3">Actions</th>
+      <% else %>
+        <th colspan="2">Actions</th>
+      <% end %>
     <% end %>
   </tr>
   </thead>
   <tbody>
-
   <tr>
     <% @books.each do |book| %>
     <tr>
@@ -36,15 +39,15 @@
       <td><h6><%= book.author %></h6></td>
       <td><h6><%= book.total_amount %></h6></td>
       <% if book.available? %>
-      <td><h6>Yes</h6></td>
+        <td><h6>Yes</h6></td>
       <% else %>
-      <td><h6>No</h6></td>
+        <td><h6>No</h6></td>
       <% end %>
       <% if user_signed_in? %>
-      <td><%= link_to 'Show', book, class: 'btn btn-primary text-light' %></td>
-      <td><%= link_to 'Edit', edit_book_path(book), class: 'btn btn-primary text-light' %></td>
-      <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light' %></td>
-        <td><%= link_to 'Borrow Book', 'asd', class: 'btn btn-primary text-light' %></td>
+        <td><%= link_to 'Show', book, class: 'btn btn-primary text-light' %></td>
+        <td><%= link_to 'Edit', edit_book_path(book), class: 'btn btn-primary text-light' %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light' %></td>
+        <td><%= link_to 'Borrow Book', edit_loan_path(book), class: 'btn btn-primary text-light' %></td>
       <% end %>
     </tr>
   <% end %>

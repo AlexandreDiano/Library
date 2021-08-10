@@ -48,7 +48,8 @@
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Yes</a></li>
+              <li><%= form.radio_button :autolyse, "Yes", :value => "true", class: "dropdown-item", :checked => true %></li>
+              <li><%= form.radio_button :autolyse, "No", :value => "false", class: "dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">No</a></li>
             </ul>
           </div>

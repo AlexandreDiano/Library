@@ -1,37 +1,12 @@
-<%= form_with(model: loan) do |form| %>
-  <% if loan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
-
-      <ul>
-        <% loan.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with model: @loan do |form| %>
+  <%= form.text_field :cpf, value: current_user.profile.id %>
+  </br>
+  </br>
+  <%= fields_for @book do |form| %>
+    <%= form.text_field :borrow_books, value: @id%>
   <% end %>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.number_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :borrow_books %>
-    <%= form.number_field :borrow_books %>
-  </div>
-
-  <div class="field">
-    <%= form.label :returned_books %>
-    <%= form.number_field :returned_books %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_pending %>
-    <%= form.text_field :total_pending %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.hidden_field :returned_books, value: 0 %>
+  <%= form.hidden_field :total_pending, value: 0 %>
+  <%= form.submit%>
+  <%#= link_to 'Não, eu não quero emprestar este livro!', book_path %>
 <% end %>

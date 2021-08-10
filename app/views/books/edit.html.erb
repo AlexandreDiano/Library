@@ -1,8 +1,11 @@
-<h1 align="center">Editing Book</h1>
+<% if current_user.profile.user_type_id == 2 %>
+  <h1 align="center">Editing Book</h1>
+  <%= render 'form', book: @book %>
 
-<%= render 'form', book: @book %>
-
-<div class="container text-center">
-  <%= link_to 'Show', @book, class: 'btn btn-primary text-light'%>
-  <%= link_to 'Back', books_path, class: 'btn btn-primary text-light' %>
-</div>
+  <div class="container text-center">
+    <%= link_to 'Show', @book, class: 'btn btn-primary text-light'%>
+    <%= link_to 'Back', books_path, class: 'btn btn-primary text-light' %>
+  </div>
+<% else %>
+  <%= redirect_to books_path%>
+<% end %>

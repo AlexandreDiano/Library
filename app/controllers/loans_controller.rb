@@ -1,6 +1,5 @@
 class LoansController < ApplicationController
-  before_action :set_loan, only: %i[ show edit update destroy ]
-
+  before_action :set_loan, :create_empty, only: %i[ show edit update destroy ]
   # GET /loans or /loans.json
   def index
     @loans = Loan.all
@@ -19,10 +18,27 @@ class LoansController < ApplicationController
   def edit
   end
 
+  def create_empty
+    @id = Book.find_by_id(params[:id]).id
+    if loan_params.nil?
+      @loan = Loan.new(borrow_books: 0, returned_books: 0, total_pending: 0)
+    else
+      @loan = Loan.new(loan_params)
+      respond_to do |format|
+        if @loan.save
+          format.html { redirect_to @loan, notice: "Loan was successfully created." }
+          format.json { render :show, status: :created, location: @loan }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @loan.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   # POST /loans or /loans.json
   def create
     @loan = Loan.new(loan_params)
-
     respond_to do |format|
       if @loan.save
         format.html { redirect_to @loan, notice: "Loan was successfully created." }
@@ -59,11 +75,11 @@ class LoansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_loan
-      @loan = Loan.find(params[:id])
+      @loan = Book.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def loan_params
-      params.require(:loan).permit(:cpf, :borrow_books, :returned_books, :total_pending)
+      params.require(:loan).permit(:profiles_id, :books_id, :borrow_books, :returned_books, :total_pending)
     end
 end

@@ -11,6 +11,6 @@ class User < ApplicationRecord
 
   private
   def set_profile_id
-    Profile.create(borrows_returned: 0, borrows_amount: 0, debit: 0, zip_code: '00000-000', age: 0,cpf: '000.000.000-00', name: self.email, user_type_id: 3, user_id: self.id)
+    Profile.create(borrows_returned: 0, borrows_amount: 0, debit: 0, zip_code: '00000-000', age: 0,cpf: '000.000.000-00', name: self.email, user_type_id: 1, user_id: self.id)
   end
 end

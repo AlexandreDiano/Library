@@ -9,11 +9,6 @@
       </ul>
     </div>
   <% end %>
-  <%# if user_signed_in?  %>
-  <%# @users.each do |user| %>
-  <%#= user.email %>
-  <%# end %>
-  <%# end %>
   <div class="container pt-3">
     <form>
       <div class="row">
@@ -41,27 +36,6 @@
           <div class="form-outline mb-4">
             <%= form.text_field :zip_code, class: 'form-control' %>
             <%= form.label :zip_code, class: 'form-label' %>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <div class="form-outline mb-4">
-            <%= form.text_field :debit, class: 'form-control' %>
-            <%= form.label :debit, class: 'form-label'  %>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-outline mb-4">
-            <%= form.text_field :borrows_amount, class: 'form-control' %>
-            <%= form.label :borrows_amount, class: 'form-label'  %>
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-outline mb-4">
-            <%= form.text_field :borrows_returned, class: 'form-control' %>
-            <%= form.label :borrows_returned, class: 'form-label'  %>
           </div>
         </div>
       </div>
