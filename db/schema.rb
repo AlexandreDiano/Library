@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
     t.index ["profiles_id"], name: "index_loans_on_profiles_id"
   end
 
-  create_table "profile", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "cpf"
     t.string "name"
     t.integer "age"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
   end
 
   add_foreign_key "loans", "books", column: "books_id"
-  add_foreign_key "loans", "profile", column: "profiles_id"
-  add_foreign_key "profile", "user_types"
-  add_foreign_key "profile", "users"
+  add_foreign_key "loans", "profiles", column: "profiles_id"
+  add_foreign_key "profiles", "user_types"
+  add_foreign_key "profiles", "users"
 end
