@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :set_loan, :create_empty, only: %i[ show edit update destroy ]
+  before_action :set_loan, only: %i[ show edit update destroy ]
   # GET /loans or /loans.json
   def index
     @loans = Loan.all
@@ -57,11 +57,11 @@ class LoansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_loan
-      @loan = Book.find(params[:id])
+      @loan = Loan.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def loan_params
-      params.require(:loan).permit(:profiles_id, :books_id, :borrow_books, :returned_books, :total_pending)
+      params.require(:loan).permit(:profiles_id, :books_id)
     end
 end
