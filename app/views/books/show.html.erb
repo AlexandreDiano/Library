@@ -1,55 +1,55 @@
 <p id="notice"><%= notice %></p>
 <div class="container" align="center">
   <div class="card col-6">
-  <div class="card-body">
-    <h3 class="card-title"><%= @book.name %></h3>
-    <table class="table table-hover">
-      <tbody align="center">
-      <tr>
-        <td>
-          <h5>Name</h5>
-          <h6><%= @book.name %></h6>
-        </td>
-        <td>
-          <h5>Genre</h5>
-          <h6><%= @book.genre %></h6>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h5>Summary</h5>
-          <h6><%= @book.summary %></h6>
-        </td>
-        <td>
-          <h5>Publishing company</h5>
-          <h6><%= @book.publishing_company %></h6>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h5>Language</h5>
-          <h6><%= @book.language %></h6>
-        </td>
-        <td>
-          <h5>Author</h5>
-          <h6><%= @book.author %></h6>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h5>Total amount</h5>
-          <h6><%= @book.total_amount %></h6>
-        </td>
-        <td>
-          <h5>Available</h5>
-          <h6><%= @book.available %></h6>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-primary text-light' %>
-    <%= link_to 'Back', books_path, class: 'btn btn-primary text-light' %>
+    <div class="card-body">
+      <h3 class="card-title"><%= @book.name %></h3>
+      <table class="table table-hover">
+        <tbody align="center">
+        <tr>
+          <td>
+            <h5>Name</h5>
+            <h6><%= @book.name %></h6>
+          </td>
+          <td>
+            <h5>Genre</h5>
+            <h6><%= @book.genre %></h6>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5>Summary</h5>
+            <h6><%= @book.summary %></h6>
+          </td>
+          <td>
+            <h5>Publishing company</h5>
+            <h6><%= @book.publishing_company %></h6>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5>Language</h5>
+            <h6><%= @book.language %></h6>
+          </td>
+          <td>
+            <h5>Author</h5>
+            <h6><%= @book.author %></h6>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h5>Total amount</h5>
+            <h6><%= @book.total_amount %></h6>
+          </td>
+          <td>
+            <h5>Available</h5>
+            <h6><%= @book.available %></h6>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-primary text-light' %>
+      <%= link_to 'Back', books_path, class: 'btn btn-primary text-light' %>
+    </div>
   </div>
-</div>
 
 </div>

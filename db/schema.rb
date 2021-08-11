@@ -29,9 +29,6 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
   end
 
   create_table "loans", force: :cascade do |t|
-    t.integer "borrow_books"
-    t.integer "returned_books"
-    t.float "total_pending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "profiles_id", null: false
@@ -40,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
     t.index ["profiles_id"], name: "index_loans_on_profiles_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.bigint "cpf"
+  create_table "profile", force: :cascade do |t|
+    t.string "cpf"
     t.string "name"
     t.integer "age"
     t.bigint "zip_code"
@@ -75,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
   end
 
   add_foreign_key "loans", "books", column: "books_id"
-  add_foreign_key "loans", "profiles", column: "profiles_id"
-  add_foreign_key "profiles", "user_types"
-  add_foreign_key "profiles", "users"
+  add_foreign_key "loans", "profile", column: "profiles_id"
+  add_foreign_key "profile", "user_types"
+  add_foreign_key "profile", "users"
 end

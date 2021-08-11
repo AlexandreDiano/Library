@@ -1,12 +1,8 @@
-<%= form_with model: @loan do |form| %>
-  <%= form.text_field :cpf, value: current_user.profile.id %>
+<%= form_with model: @loan, :url => create_loan_path do |form| %>
+  <%= form.text_field :profile_id, value: current_user.profile.id %>
   </br>
   </br>
-  <%= fields_for @book do |form| %>
-    <%= form.text_field :borrow_books, value: @id%>
-  <% end %>
-  <%= form.hidden_field :returned_books, value: 0 %>
-  <%= form.hidden_field :total_pending, value: 0 %>
-  <%= form.submit%>
+    <%= form.text_field :books_id, value: Book.find_by_id(params[:id]).id%>
+  <%= form.create_loan%>
   <%#= link_to 'Não, eu não quero emprestar este livro!', book_path %>
 <% end %>

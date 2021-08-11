@@ -18,24 +18,6 @@ class LoansController < ApplicationController
   def edit
   end
 
-  def create_empty
-    @id = Book.find_by_id(params[:id]).id
-    if loan_params.nil?
-      @loan = Loan.new(borrow_books: 0, returned_books: 0, total_pending: 0)
-    else
-      @loan = Loan.new(loan_params)
-      respond_to do |format|
-        if @loan.save
-          format.html { redirect_to @loan, notice: "Loan was successfully created." }
-          format.json { render :show, status: :created, location: @loan }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @loan.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  end
-
   # POST /loans or /loans.json
   def create
     @loan = Loan.new(loan_params)
