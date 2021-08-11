@@ -1,23 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cpf:</strong>
-  <%= @loan.cpf %>
+  <strong>ID:</strong>
+  <%= @loan.id %>
 </p>
 
 <p>
-  <strong>Borrow books:</strong>
-  <%= @loan.borrow_books %>
+  <strong>ID Profiles:</strong>
+  <%= @loan.profiles_id %>
 </p>
 
 <p>
-  <strong>Returned books:</strong>
-  <%= @loan.returned_books %>
-</p>
-
-<p>
-  <strong>Total pending:</strong>
-  <%= @loan.total_pending %>
+  <strong>ID Books:</strong>
+  <%= @loan.books_id %>
 </p>
 
 <%= link_to 'Edit', edit_loan_path(@loan) %> |

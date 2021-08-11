@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :set_loan, :create_empty, only: %i[ show edit update destroy ]
+  before_action :set_loan, only: %i[ show edit update destroy ]
   # GET /loans or /loans.json
   def index
     @loans = Loan.all
@@ -23,8 +23,9 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan, notice: "Loan was successfully created." }
-        format.json { render :show, status: :created, location: @loan }
+        format.html { redirect_to books_path, notice: "Loan was sucefully created." }
+        format.json { redirect_to books_path }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @loan.errors, status: :unprocessable_entity }
@@ -57,11 +58,11 @@ class LoansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_loan
-      @loan = Book.find(params[:id])
+      @loan = Loan.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def loan_params
-      params.require(:loan).permit(:profiles_id, :books_id, :borrow_books, :returned_books, :total_pending)
+      params.require(:loan).permit(:profiles_id, :books_id)
     end
 end

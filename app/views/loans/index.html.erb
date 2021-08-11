@@ -5,10 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Cpf</th>
-      <th>Borrow books</th>
-      <th>Returned books</th>
-      <th>Total pending</th>
+      <th>Book Name</th>
+      <th>Returned?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +14,8 @@
   <tbody>
     <% @loans.each do |loan| %>
       <tr>
-        <td><%= loan.cpf %></td>
-        <td><%= loan.borrow_books %></td>
-        <td><%= loan.returned_books %></td>
-        <td><%= loan.total_pending %></td>
+        <td><h6><%= loan.book.name %></h6></td>
+        <td><h6><%= loan.profile.name %></h6></td>
         <td><%= link_to 'Show', loan %></td>
         <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
         <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

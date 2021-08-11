@@ -47,7 +47,13 @@
         <td><%= link_to 'Show', book, class: 'btn btn-primary text-light' %></td>
         <td><%= link_to 'Edit', edit_book_path(book), class: 'btn btn-primary text-light' %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light' %></td>
-        <td><%= link_to 'Borrow Book', loans_book_index_path(book), class: 'btn btn-primary text-light' %></td>
+        <td>
+          <%= form_with url: loans_path, method: :post do |form| %>
+            <%= form.hidden_field "loan[profiles_id]", value: current_user.profile.id %>
+            <%= form.hidden_field "loan[books_id]", value: book.id %>
+            <%= form.submit 'Borrow Book', class: 'btn btn-primary btn-block mb-4' %>
+          <% end %>
+        </td>
       <% end %>
     </tr>
   <% end %>
