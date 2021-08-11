@@ -1,8 +1,6 @@
-<%= form_with model: @loan, :url => create_loan_path do |form| %>
+<%= form_with model: @loan do |form| %>
   <%= form.text_field :profile_id, value: current_user.profile.id %>
-  </br>
-  </br>
-    <%= form.text_field :books_id, value: Book.find_by_id(params[:id]).id%>
-  <%= form.create_loan%>
+  <%= form.text_field :books_id, value: 1 %>
+  <%= form.submit %>
   <%#= link_to 'Não, eu não quero emprestar este livro!', book_path %>
 <% end %>
