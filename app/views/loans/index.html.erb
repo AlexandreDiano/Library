@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Loans</h1>
-
+<%= link_to 'New Loan', new_loan_path %>
 <table>
   <thead>
     <tr>
@@ -10,7 +9,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @loans.each do |loan| %>
       <tr>
@@ -23,7 +21,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Loan', new_loan_path %>

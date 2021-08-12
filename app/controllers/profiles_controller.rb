@@ -13,12 +13,25 @@ class ProfilesController < ApplicationController
   def edit
   end
 
+  def create
+    @profile = Profile.new(profile_params)
+    respond_to do |format|
+      if @profile.save
+        format.html { redirect_to profile_path, notice: "Loan was sucefully created." }
+        format.json { redirect_to profile_path }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /books/1 or /books/1.json
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: "Book was successfully updated." }
-        format.json { render :show, status: :ok, location: @profile }
+        format.html { redirect_to profile_path, notice: "Book was successfully updated." }
+        format.json { render profile_path, status: :ok, location: @profile }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -43,6 +56,6 @@ class ProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profile_params
-    params.require(:profile).permit(:cpf, :name, :age, :zip_code)
+    params.require(:profile).permit(:cpf, :name, :age, :zip_code, :debit, :borrows_amount, :borrows_returned)
   end
 end

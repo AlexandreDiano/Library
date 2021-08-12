@@ -25,7 +25,6 @@ class LoansController < ApplicationController
       if @loan.save
         format.html { redirect_to books_path, notice: "Loan was sucefully created." }
         format.json { redirect_to books_path }
-
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @loan.errors, status: :unprocessable_entity }

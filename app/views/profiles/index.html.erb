@@ -5,12 +5,10 @@
 
 <table class="table table-hover">
   <thead>
-  <tr>
+  <tr class="text-center">
     <th scope="col">ID</th>
     <th scope="col">Email</th>
-    <th scope="col">ID</th>
     <th scope="col">title</th>
-    <th scope="col">ID</th>
     <th scope="col">cpf</th>
     <th scope="col">name</th>
     <th scope="col">age</th>
@@ -18,31 +16,36 @@
     <th scope="col">borrows_returned</th>
     <th scope="col">borrows_amount</th>
     <th scope="col">debit</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
-
-  <tr>
-    <% @users.each do |user| %>
-    <tr>
-      <td><h6><%= user.id %></h6></td>
-      <td><h6><%= user.email %><br/></h6></td>
-  <% end %>
-  <% @user_types.each do |type| %>
-      <td><h6><%= type.id %></h6></td>
-      <td><h6><%= type.title %><br/></h6></td>
-  <% end %>
   <% @profiles.each do |profile| %>
-      <td><h6><%= profile.id %></h6></td>
-      <td><h6><%= profile.cpf %><br/></h6></td>
-      <td><h6><%= profile.name %><br/></h6></td>
-      <td><h6><%= profile.age %><br/></h6></td>
-      <td><h6><%= profile.zip_code %><br/></h6></td>
-      <td><h6><%= profile.borrows_returned %><br/></h6></td>
-      <td><h6><%= profile.borrows_amount %><br/></h6></td>
-      <td><h6><%= profile.debit %><br/></h6></td>
-      <td> <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-primary text-light' %></td>
-    </tr>
+    <tr class="text-center">
+      <td><h6><%= profile.id %><br/></h6></td>
+      <td><h6><%= profile.user.email %><br/></h6></td>
+      <td><h6>
+        <%= form_with url: profiles_change_path(profile), method: :patch do |form| %>
+          <%= select("profile", "user_type_id", UserType.all.collect {|p| [ p.title, p.id ] }, { include_blank: false })%>
+          </h6></td>
+
+          <td><h6><%= profile.cpf %><br/></h6></td>
+          <td><h6><%= profile.name %><br/></h6></td>
+          <td><h6><%= profile.age %><br/></h6></td>
+          <td><h6><%= profile.zip_code %><br/></h6></td>
+          <td><h6><%= profile.borrows_returned %><br/></h6></td>
+          <td><h6><%= profile.borrows_amount %><br/></h6></td>
+          <td><h6><%= profile.debit %><br/></h6></td>
+          <td> <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-primary text-light' %></td>
+          <td><%= form.submit 'Change User Type', class: 'btn btn-primary btn-block mb-4' %></td>
+        <% end %>
+
+        <td><%= form_with url: profiles_change_path(profile), method: :patch do |form| %>
+            <%= form.hidden_field "profile[user_type_id]", value: '2' %>
+          <% end %>
+        </td>
+
+        </tr>
   <% end %>
   </tbody>
 </table>
