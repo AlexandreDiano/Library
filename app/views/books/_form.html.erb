@@ -38,20 +38,16 @@
       </div>
       <div class="col">
           <div class="btn-group">
-            <button type="button" class="btn btn-primary">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;There are Available books? &nbsp; &nbsp;</button>
+            <button type="button" class="btn btn-primary">There are Available books? &nbsp; &nbsp;</button>
             <button
               type="button"
               class="btn btn-primary dropdown-toggle dropdown-toggle-split"
               data-mdb-toggle="dropdown"
               aria-expanded="false"
             >
-              <span class="visually-hidden">Toggle Dropdown</span>
+              <%= form.select :available, [['Yes', true], ['No', false]], class: 'form-label' %>
             </button>
-            <ul class="dropdown-menu">
-              <li><%= form.radio_button :autolyse, "Yes", :value => "true", class: "dropdown-item", :checked => true %></li>
-              <li><%= form.radio_button :autolyse, "No", :value => "false", class: "dropdown-item" %></li>
-              <li><a class="dropdown-item" href="#">No</a></li>
-            </ul>
+
           </div>
       </div>
       <div class="col">
@@ -61,7 +57,7 @@
         </div>
       </div>
     </div>
-
+    <br>
     <div class="row g-2">
       <div class="col">
         <div class="form-outline mb-4">

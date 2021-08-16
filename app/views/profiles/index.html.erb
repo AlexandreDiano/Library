@@ -27,7 +27,7 @@
       <td><h6>
         <%= form_with url: profiles_change_path(profile), method: :patch do |form| %>
           <%= select("profile", "user_type_id", UserType.all.collect {|p| [ p.title, p.id ] }, { include_blank: false })%>
-          </h6></td>
+          </h6><br><%= form.submit 'Change User Type', class: 'btn btn-primary btn-block mb-4 btn-sm' %></td>
 
           <td><h6><%= profile.cpf %><br/></h6></td>
           <td><h6><%= profile.name %><br/></h6></td>
@@ -36,8 +36,8 @@
           <td><h6><%= profile.borrows_returned %><br/></h6></td>
           <td><h6><%= profile.borrows_amount %><br/></h6></td>
           <td><h6><%= profile.debit %><br/></h6></td>
-          <td> <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-primary text-light' %></td>
-          <td><%= form.submit 'Change User Type', class: 'btn btn-primary btn-block mb-4' %></td>
+          <td> <%= link_to 'Edit', edit_profile_path(profile), class: 'btn btn-primary text-light btn-sm' %></td>
+
         <% end %>
 
         <td><%= form_with url: profiles_change_path(profile), method: :patch do |form| %>

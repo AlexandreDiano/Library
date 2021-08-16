@@ -3,7 +3,6 @@
   <h1>Books</h1>
   <%= link_to 'New Book', new_book_path, class: 'btn btn-success text-light' %>
 </div>
-
 <table class="table table-hover">
   <thead>
   <tr>
@@ -49,8 +48,10 @@
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light' %></td>
         <td>
           <%= form_with url: loans_path, method: :post do |form| %>
-            <%= form.hidden_field "loan[profiles_id]", value: current_user.profile.id %>
-            <%= form.hidden_field "loan[books_id]", value: book.id %>
+            <%= form.hidden_field "loan[profile_id]", value: current_user.profile.id %>
+            <%= form.hidden_field "loan[book_id]", value: book.id %>
+            <%= form.hidden_field "loan[debit]", value: 0.0 %>
+            <%= form.hidden_field "book[total_amount]", value: -1 %>
             <%= form.submit 'Borrow Book', class: 'btn btn-primary btn-block mb-4' %>
           <% end %>
         </td>

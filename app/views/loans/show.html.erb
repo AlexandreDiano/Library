@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>ID:</strong>
-  <%= @loan.id %>
-</p>
-
-<p>
-  <strong>ID Profiles:</strong>
-  <%= @loan.profiles_id %>
-</p>
-
-<p>
-  <strong>ID Books:</strong>
-  <%= @loan.books_id %>
-</p>
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+<div class="container" align="center">
+</div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Profile ID</th>
+    <th>Book Name</th>
+    <th>Returned ?</th>
+    <th>Borrow Date</th>
+    <th>Loan Time</th>
+    <th>debit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @loans.each do |loan| %>
+    <tr>
+      <td><h6><%= loan.profile.name %></h6></td>
+      <td><h6><%= loan.book.name %></h6></td>
+      <td><h6></h6></td>
+      <td><h6></h6></td>
+      <%#= if loan.returned? %>
+<!--        <td><h6>Not Yet</h6></td>-->
+      <%# else %>
+<!--        <td><h6>Already Returned</h6></td>-->
+      <%# end %>
+      <td><h6><%= loan.created_at %></h6></td>
+      <td><h6><%= loan.debit %></h6></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

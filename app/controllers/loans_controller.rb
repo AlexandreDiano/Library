@@ -1,12 +1,22 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: %i[ show edit update destroy ]
   # GET /loans or /loans.json
+
+
+
   def index
     @loans = Loan.all
   end
 
+  def loan_time
+    @loan_time = if Time.zone - Loan.created_at == 30
+                   Loan.debit = 1.0
+                 end
+  end
+
   # GET /loans/1 or /loans/1.json
   def show
+    @loans = Loan.where(profile_id: params[:id])
   end
 
   # GET /loans/new
@@ -23,7 +33,7 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to books_path, notice: "Loan was sucefully created." }
+        format.html { redirect_to books_path, notice: "Loan was successfully created." }
         format.json { redirect_to books_path }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,13 +65,13 @@ class LoansController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_loan
-      @loan = Loan.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_loan
+    @loan = Loan.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def loan_params
-      params.require(:loan).permit(:profiles_id, :books_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def loan_params
+    params.require(:loan).permit(:profile_id, :book_id)
+  end
 end

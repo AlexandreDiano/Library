@@ -1,23 +1,28 @@
 <p id="notice"><%= notice %></p>
-<h1>Loans</h1>
-<%= link_to 'New Loan', new_loan_path %>
-<table>
+<div class="container" align="center">
+  <h1>Loans</h1>
+  <%= link_to 'New Loan', new_loan_path, class: 'btn btn-success text-light btn-sm'  %>
+</div>
+<table class="table table-hover">
   <thead>
-    <tr>
-      <th>Book Name</th>
-      <th>Returned?</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Book Name</th>
+    <th>Returned?</th>
+    <th>Who Borrow</th>
+    <th></th>
+    <th scope="col" colspan="3">Actions</th>
+  </tr>
   </thead>
   <tbody>
-    <% @loans.each do |loan| %>
-      <tr>
-        <td><h6><%= loan.book.name %></h6></td>
-        <td><h6><%= loan.profile.name %></h6></td>
-        <td><%= link_to 'Show', loan %></td>
-        <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
-        <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @loans.each do |loan| %>
+    <tr>
+      <td><h6><%= loan.book.name %></h6></td>
+      <td><h6><%= loan.profile.name %></h6></td>
+      <td><h6><%= loan.profile.name %></h6></td>
+      <td><%= link_to 'Show', loan, class: 'btn btn-primary text-light btn-sm' %></td>
+      <td><%= link_to 'Edit', edit_loan_path(loan), class: 'btn btn-primary text-light btn-sm' %></td>
+      <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger text-light btn-sm' %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>

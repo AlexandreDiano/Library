@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
   end
 
   create_table "loans", force: :cascade do |t|
+    t.boolean "returned"
+    t.float "debit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "profiles_id", null: false
-    t.bigint "books_id", null: false
-    t.index ["books_id"], name: "index_loans_on_books_id"
-    t.index ["profiles_id"], name: "index_loans_on_profiles_id"
+    t.bigint "profile_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id"], name: "index_loans_on_book_id"
+    t.index ["profile_id"], name: "index_loans_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -71,8 +73,8 @@ ActiveRecord::Schema.define(version: 2021_08_10_131552) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "loans", "books", column: "books_id"
-  add_foreign_key "loans", "profiles", column: "profiles_id"
+  add_foreign_key "loans", "books"
+  add_foreign_key "loans", "profiles"
   add_foreign_key "profiles", "user_types"
   add_foreign_key "profiles", "users"
 end
